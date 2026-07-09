@@ -1,6 +1,6 @@
 {
   "branches": [
-    "main"
+    "2.x"
   ],
   "tagFormat": "v${version}",
   "verifyConditions": [
