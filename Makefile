@@ -1,5 +1,10 @@
 TURBO = TURBO_TELEMETRY_DISABLED=1 turbo --dangerously-disable-package-manager-check
 
+# Variables for additional translation sources and imports (define in local deployment if needed)
+ATLAS_EXTRA_SOURCES ?=
+ATLAS_EXTRA_INTL_IMPORTS ?=
+ATLAS_OPTIONS ?=
+
 .PHONY: requirements
 requirements:
 	npm ci
@@ -51,7 +56,7 @@ i18n.extract:
 extract_translations: | requirements i18n.extract
 
 pull_translations: | requirements
-	npm run translations:pull -- --atlas-options="$(ATLAS_OPTIONS)"
+	ATLAS_EXTRA_INTL_IMPORTS="$(ATLAS_EXTRA_INTL_IMPORTS)" npm run translations:pull -- --atlas-options="$(strip $(ATLAS_OPTIONS) $(ATLAS_EXTRA_SOURCES))"
 
 detect_changed_source_translations:
 	git diff --exit-code ./src/i18n
