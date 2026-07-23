@@ -1,29 +1,13 @@
 {
   "branches": [
-    "main"
+    { "name": "release", "channel": "latest" },
+    { "name": "main", "prerelease": "alpha", "channel": "alpha" }
   ],
   "tagFormat": "v${version}",
-  "verifyConditions": [
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
     "@semantic-release/npm",
-    {
-      "path": "@semantic-release/github",
-      "assets": {
-        "path": "dist/*"
-      }
-    }
-  ],
-  "analyzeCommits": "@semantic-release/commit-analyzer",
-  "generateNotes": "@semantic-release/release-notes-generator",
-  "prepare": "@semantic-release/npm",
-  "publish": [
-    "@semantic-release/npm",
-    {
-      "path": "@semantic-release/github",
-      "assets": {
-        "path": "dist/*"
-      }
-    }
-  ],
-  "success": [],
-  "fail": []
+    "@semantic-release/github"
+  ]
 }
