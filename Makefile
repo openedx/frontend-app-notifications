@@ -6,6 +6,11 @@ transifex_input = $(i18n)/transifex_input.json
 # This directory must match .babelrc .
 transifex_temp = ./temp/babel-plugin-formatjs
 
+# Variables for additional translation sources and imports (define in edx-internal if needed)
+ATLAS_EXTRA_SOURCES ?=
+ATLAS_EXTRA_INTL_IMPORTS ?=
+ATLAS_OPTIONS ?=
+
 build:
 	rm -rf ./dist
 	./node_modules/.bin/fedx-scripts babel src --out-dir dist --source-maps --ignore **/*.test.jsx,**/*.test.js,**/setupTest.jsx --copy-files
@@ -45,9 +50,10 @@ pull_translations:
 	   && atlas pull $(ATLAS_OPTIONS) \
 	            translations/frontend-platform/src/i18n/messages:frontend-platform \
 	            translations/paragon/src/i18n/messages:paragon \
-	            translations/frontend-plugin-notifications/src/i18n/messages:frontend-plugin-notifications
+	            translations/frontend-plugin-notifications/src/i18n/messages:frontend-plugin-notifications \
+	            $(ATLAS_EXTRA_SOURCES)
 
-	$(intl_imports) frontend-platform paragon frontend-plugin-notifications
+	$(intl_imports) frontend-platform paragon frontend-plugin-notifications $(ATLAS_EXTRA_INTL_IMPORTS)
 
 validate-no-uncommitted-package-lock-changes:
 	# Checking for package-lock.json changes...
