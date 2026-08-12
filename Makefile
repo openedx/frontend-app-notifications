@@ -6,7 +6,7 @@ transifex_input = $(i18n)/transifex_input.json
 # This directory must match .babelrc .
 transifex_temp = ./temp/babel-plugin-formatjs
 
-# Variables for additional translation sources and imports (define in edx-internal if needed)
+# Variables for additional translation sources and imports
 ATLAS_EXTRA_SOURCES ?=
 ATLAS_EXTRA_INTL_IMPORTS ?=
 ATLAS_OPTIONS ?=
