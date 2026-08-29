@@ -1,8 +1,8 @@
 import React, { RefObject } from 'react';
 
 export interface NotificationPopoverContextValue {
-  popoverHeaderRef: RefObject<HTMLElement> | null,
-  notificationRef: RefObject<HTMLElement> | null,
+  popoverHeaderRef: RefObject<HTMLElement> | null;
+  notificationRef: RefObject<HTMLElement> | null;
 }
 
 const notificationPopoverContext = React.createContext<NotificationPopoverContextValue>({

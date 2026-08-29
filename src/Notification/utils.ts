@@ -11,8 +11,8 @@ import {
 import { NotificationItem } from './context/notificationsContext';
 
 export interface SplitNotifications {
-  today: NotificationItem[],
-  earlier: NotificationItem[],
+  today: NotificationItem[];
+  earlier: NotificationItem[];
 }
 
 export const splitNotificationsByTime = (
@@ -44,7 +44,7 @@ export const splitNotificationsByTime = (
 };
 
 interface IconInfo {
-  icon: ComponentType, class: string,
+  icon: ComponentType; class: string;
 }
 
 export const getIconByType = (type: string): IconInfo => {

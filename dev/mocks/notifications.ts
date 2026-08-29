@@ -1,21 +1,21 @@
 import type MockAdapter from 'axios-mock-adapter';
 
 interface NotificationSeed {
-  notification_type: string,
-  content: string,
-  unseen?: boolean,
+  notification_type: string;
+  content: string;
+  unseen?: boolean;
 }
 
 interface StoredNotification {
-  id: number,
-  app_name: string,
-  notification_type: string,
-  content: string,
-  content_url: string,
-  content_context: { course_name: string },
-  created: string,
-  last_read: string | null,
-  last_seen: string | null,
+  id: number;
+  app_name: string;
+  notification_type: string;
+  content: string;
+  content_url: string;
+  content_context: { course_name: string };
+  created: string;
+  last_read: string | null;
+  last_seen: string | null;
 }
 
 const seedsByApp: Record<string, NotificationSeed[]> = {

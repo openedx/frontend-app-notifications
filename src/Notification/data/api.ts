@@ -1,36 +1,36 @@
 import { getAuthenticatedHttpClient, getSiteConfig, snakeCaseObject } from '@openedx/frontend-base';
 
 export interface NotificationCountsResponse {
-  count: number,
-  count_by_app_name: Record<string, number>,
-  show_notifications_tray: boolean,
-  notification_expiry_days?: number,
-  is_new_notification_view_enabled: boolean,
+  count: number;
+  count_by_app_name: Record<string, number>;
+  show_notifications_tray: boolean;
+  notification_expiry_days?: number;
+  is_new_notification_view_enabled: boolean;
 }
 
 export interface NotificationRaw {
-  id: number,
-  notification_type?: string,
-  content_url: string,
-  content: string,
-  content_context?: { course_name?: string },
-  created: string,
-  last_read?: string | null,
-  last_seen?: string | null,
+  id: number;
+  notification_type?: string;
+  content_url: string;
+  content: string;
+  content_context?: { course_name?: string };
+  created: string;
+  last_read?: string | null;
+  last_seen?: string | null;
 }
 
 export interface NotificationsListResponse {
-  next: string | null,
-  previous: string | null,
-  count: number,
-  num_pages: number,
-  current_page: number,
-  start: number,
-  results: NotificationRaw[],
+  next: string | null;
+  previous: string | null;
+  count: number;
+  num_pages: number;
+  current_page: number;
+  start: number;
+  results: NotificationRaw[];
 }
 
 export interface MarkNotificationResponse {
-  message?: string,
+  message?: string;
 }
 
 export const getNotificationsCountApiUrl = (): string => `${getSiteConfig().lmsBaseUrl}/api/notifications/count/`;
@@ -69,7 +69,7 @@ export async function markAllNotificationRead(appName: string): Promise<MarkNoti
 
 export async function markNotificationRead(
   notificationId: number,
-): Promise<{ data: MarkNotificationResponse, id: number }> {
+): Promise<{ data: MarkNotificationResponse; id: number }> {
   const params = snakeCaseObject({ notificationId });
   const { data } = await getAuthenticatedHttpClient().patch(markNotificationAsReadApiUrl(), params);
   return { data, id: notificationId };

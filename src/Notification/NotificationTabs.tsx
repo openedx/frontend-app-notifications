@@ -7,7 +7,7 @@ import { notificationsContext } from './context/notificationsContext';
 import { NotificationAppData, useMarkNotificationSeen } from './data/hook';
 
 interface NotificationTabsProps {
-  notificationAppData: NotificationAppData,
+  notificationAppData: NotificationAppData;
 }
 
 const NotificationTabs: React.FC<NotificationTabsProps> = ({ notificationAppData }) => {

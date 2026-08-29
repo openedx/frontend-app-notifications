@@ -16,7 +16,7 @@ import { notificationsContext, NotificationItem } from './context/notificationsC
 import { NotificationAppData, useMarkAllNotificationsRead, useNotificationList } from './data/hook';
 
 interface NotificationSectionsProps {
-  notificationAppData: NotificationAppData,
+  notificationAppData: NotificationAppData;
 }
 
 const NotificationSections: React.FC<NotificationSectionsProps> = ({ notificationAppData }) => {

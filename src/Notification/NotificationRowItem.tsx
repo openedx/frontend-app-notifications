@@ -12,13 +12,13 @@ import { getIconByType } from './utils';
 import { useMarkNotificationRead } from './data/hook';
 
 interface NotificationRowItemProps {
-  id: number,
-  type?: string,
-  contentUrl: string,
-  content: string,
-  courseName: string,
-  createdAt: string,
-  lastRead?: string | null,
+  id: number;
+  type?: string;
+  contentUrl: string;
+  content: string;
+  courseName: string;
+  createdAt: string;
+  lastRead?: string | null;
 }
 
 const NotificationRowItem: React.FC<NotificationRowItemProps> = ({

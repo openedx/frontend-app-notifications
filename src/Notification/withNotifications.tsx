@@ -3,7 +3,7 @@ import React, { ComponentType } from 'react';
 import { useAppNotifications, NotificationAppData } from './data/hook';
 
 export interface WithNotificationsProps {
-  notificationAppData?: NotificationAppData,
+  notificationAppData?: NotificationAppData;
 }
 
 export default function withNotifications<P extends WithNotificationsProps>(

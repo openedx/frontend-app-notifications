@@ -21,8 +21,8 @@ import { notificationsContext, NotificationContextValue } from './context/notifi
 import './notification.scss';
 
 interface NotificationsProps {
-  notificationAppData?: NotificationAppData,
-  margins?: string,
+  notificationAppData?: NotificationAppData;
+  margins?: string;
 }
 
 const defaultNotificationAppData: NotificationAppData = {
