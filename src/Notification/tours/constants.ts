@@ -1,4 +1,4 @@
-import { IntlShape } from 'react-intl';
+import { IntlShape } from '@openedx/frontend-base';
 import messages from './messages';
 
 export default function tourCheckpoints(intl: IntlShape) {
