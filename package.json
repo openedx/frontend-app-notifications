@@ -1,6 +1,7 @@
 {
   "name": "@openedx/frontend-app-notifications",
   "version": "0.0.0-dev",
+  "packageManager": "npm@11.12.1",
   "description": "Open edX frontend app for notifications",
   "repository": {
     "type": "git",
