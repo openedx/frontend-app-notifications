@@ -70,6 +70,8 @@
   },
   "devDependencies": {
     "@edx/browserslist-config": "^1.1.1",
+    "@openedx/frontend-base": "^2.0.0-alpha.15 || 0.0.0-dev",
+    "@openedx/paragon": "^23 || 0.0.0-dev",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^14.3.1",
     "axios-mock-adapter": "^1.22.0",
@@ -84,7 +86,7 @@
   },
   "peerDependencies": {
     "@openedx/frontend-base": "^2.0.0-alpha.15 || 0.0.0-dev",
-    "@openedx/paragon": "^23",
+    "@openedx/paragon": "^23 || 0.0.0-dev",
     "@tanstack/react-query": "^5",
     "react": "^18",
     "react-dom": "^18",
