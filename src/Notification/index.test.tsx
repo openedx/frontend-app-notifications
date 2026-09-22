@@ -10,10 +10,13 @@ import { Factory } from 'rosie';
 
 import {
   IntlProvider,
+  SiteConfig,
   SiteContext,
   getAuthenticatedHttpClient,
   getSiteConfig,
   initializeMockApp,
+  mergeSiteConfig,
+  setSiteConfig,
 } from '@openedx/frontend-base';
 import { QueryClientProvider } from '@tanstack/react-query';
 
@@ -62,14 +65,18 @@ async function renderComponent(url = '/') {
 }
 
 describe('Notification test cases.', () => {
+  let originalSiteConfig: SiteConfig;
+
   beforeEach(async () => {
     initializeMockApp({ authenticatedUser });
+    originalSiteConfig = { ...getSiteConfig() };
 
     axiosMock = new MockAdapter(getAuthenticatedHttpClient());
     Factory.resetAll();
   });
 
   afterEach(() => {
+    setSiteConfig(originalSiteConfig);
     jest.clearAllMocks();
   });
 
@@ -165,6 +172,34 @@ describe('Notification test cases.', () => {
         fireEvent.click(bellIcon);
       });
       await waitFor(() => expect(screen.queryByTestId('notification-tray')).not.toBeInTheDocument());
+    });
+  });
+
+  it('links the settings icon to the account route in the client when an app provides it', async () => {
+    mergeSiteConfig({
+      apps: [{
+        appId: 'org.openedx.frontend.app.notificationsTest',
+        routes: [{ path: 'account', handle: { roles: ['org.openedx.frontend.role.account'] } }],
+      }],
+    });
+    await setupMockNotificationCountResponse();
+    await renderComponent('/?showNotifications=true');
+
+    await waitFor(() => {
+      const link = screen.getByTestId('setting-icon').closest('a');
+      expect(link).toHaveAttribute('href', '/account/#notifications');
+      expect(link).not.toHaveAttribute('target', '_blank');
+    });
+  });
+
+  it('links the settings icon to an external account route in a new tab', async () => {
+    await setupMockNotificationCountResponse();
+    await renderComponent('/?showNotifications=true');
+
+    await waitFor(() => {
+      const link = screen.getByTestId('setting-icon').closest('a');
+      expect(link).toHaveAttribute('href', 'http://localhost/account/#notifications');
+      expect(link).toHaveAttribute('target', '_blank');
     });
   });
 
