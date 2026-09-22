@@ -5,7 +5,7 @@ import React, {
 import classNames from 'classnames';
 import { Link, useSearchParams } from 'react-router-dom';
 
-import { getUrlByRouteRole, useIntl } from '@openedx/frontend-base';
+import { resolveRouteByRole, useIntl } from '@openedx/frontend-base';
 import {
   Bubble, Hyperlink, Icon, IconButton, OverlayTrigger, Popover,
 } from '@openedx/paragon';
@@ -101,11 +101,11 @@ const Notifications: React.FC<NotificationsProps> = ({
     handleActiveTab,
   }), [appName, handleActiveTab]);
 
-  const accountSettingsUrl = getUrlByRouteRole('org.openedx.frontend.role.account');
-  const settingsDestination = accountSettingsUrl
-    ? `${accountSettingsUrl.replace(/\/$/, '')}/#notifications`
+  const accountRoute = resolveRouteByRole('org.openedx.frontend.role.account');
+  const settingsDestination = accountRoute
+    ? `${accountRoute.url.replace(/\/$/, '')}/#notifications`
     : '';
-  const isInternalRoute = !!accountSettingsUrl && !/^[a-z][a-z0-9+.-]*:/i.test(accountSettingsUrl);
+  const isInternalRoute = accountRoute?.isInternal ?? false;
   const settingsIcon = (
     <Icon
       src={Settings}
