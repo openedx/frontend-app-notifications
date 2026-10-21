@@ -82,7 +82,8 @@
     "rosie": "^2.1.1",
     "semantic-release": "^25.0.0",
     "tsc-alias": "^1.8.16",
-    "turbo": "^2.8.20"
+    "turbo": "^2.8.20",
+    "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "@openedx/frontend-base": "^2.0.0-alpha.15 || 0.0.0-dev",
